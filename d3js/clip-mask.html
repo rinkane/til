@@ -7,6 +7,7 @@
   <body>
     <script type="text/javascript">
       // 正方形を円でクリッピング（切り抜き）
+      // ベースの正方形
       d3.select("body")
         .append("svg")
         .append("rect")
@@ -15,13 +16,45 @@
         .attr("width", 100)
         .attr("height", 100)
         .attr("clip-path", "url(#clip-rect)")
+        .style("fill", "blue");
+      // 正方形を切り抜く円
       d3.select("svg")
         .append("clipPath")
         .attr("id", "clip-rect")
         .append("circle")
         .attr("cx", 100)
         .attr("cy", 100)
-        .attr("r", 100)
+        .attr("r", 100);
+
+      // 正方形を円でマスク
+      // ベースの正方形
+      d3.select("svg")
+        .append("rect")
+        .attr("x", 200)
+        .attr("y", 0)
+        .attr("width", 100)
+        .attr("height", 100)
+        .attr("mask", "url(#mask-rect)")
+        .style("fill", "blue");
+      // ベースの正方形全体を表示させるマスク
+      d3.select("svg")
+        .append("mask")
+        .attr("id", "mask-rect")
+        .append("rect")
+        .attr("x", 200)
+        .attr("y", 0)
+        .attr("width", 100)
+        .attr("height", 100)
+        .style("fill", "white")
+        .style("opacity", 1);
+      // ベースの正方形の中央に穴を開けるマスク
+      d3.select("mask")
+        .append("circle")
+        .attr("cx", 250)
+        .attr("cy", 50)
+        .attr("r", 10)
+        .style("fill", "black") // この2行は
+        .style("opacity", 1); // 実際には不要
     </script>
   </body>
 </html>
