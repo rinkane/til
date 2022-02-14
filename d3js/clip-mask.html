@@ -1,8 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <title>clip and mask</title>
- </head>
- <body>
- </body>
+  <head>
+    <title>clip and mask</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // 正方形を円でクリッピング（切り抜き）
+      d3.select("body")
+        .append("svg")
+        .append("rect")
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("width", 100)
+        .attr("height", 100)
+        .attr("clip-path", "url(#clip-rect)")
+      d3.select("svg")
+        .append("clipPath")
+        .attr("id", "clip-rect")
+        .append("circle")
+        .attr("cx", 100)
+        .attr("cy", 100)
+        .attr("r", 100)
+    </script>
+  </body>
 </html>
