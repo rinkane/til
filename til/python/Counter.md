@@ -18,7 +18,7 @@ from collections import Counter
 cnt = Counter(list)
 ```
 だけで済む。
-***
+
 ## 出現回数順にソート
 ### 降順
 ```
